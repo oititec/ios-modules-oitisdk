@@ -1,0 +1,11 @@
+framework module OILivenessIProov {
+  umbrella header "OILivenessIProov.h"
+  export *
+
+  module * { export * }
+}
+
+module OILivenessIProov.Swift {
+  header "OILivenessIProov-Swift.h"
+  requires objc
+}

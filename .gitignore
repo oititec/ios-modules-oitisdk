@@ -1,0 +1,73 @@
+## OS X Finder
+.DS_Store
+*.orig
+
+## Build generated
+build/
+DerivedData
+Logs
+SourcePackages
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+*.log
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.log
+
+# Swift Package Manager
+.build/
+.swiftpm
+Packages/
+
+# Carthage
+Carthage/Build
+
+#FBSnapshotTestCase
+*/Snapshots/FailureDiffs/
+
+#Pods
+Pods/
+# Podfile.lock
+
+## Xcode Patch
+/*.gcno
+**/Package.resolved
+
+### Xcode Patch ###
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+tmp.json
+
+upload_dsym_results
+Build/**
+Index/**
+Logs/**
+TestResults/**
+.scannerwork/**
+ModuleCache.noindex/**
+sonarqube-generic-coverage.xml
+UniversalFramework/
+**/*.xcarchive
+**/*.orig
+**/*.swp
+Gemfile.lock
+
+# Configurations
+*.xcconfig
