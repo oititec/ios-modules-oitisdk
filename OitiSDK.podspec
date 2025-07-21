@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'OICommons', '~> 2.1.1'
   s.dependency 'OINetwork', '~> 2.1.2'
-  s.dependency 'OIComponents', '~> 1.9'
+  s.dependency 'OIComponents', '~> 2.0.0'
   s.dependency 'OISecurity', '~> 4.2'
   s.dependency 'iProov', '12.3.1'
 end

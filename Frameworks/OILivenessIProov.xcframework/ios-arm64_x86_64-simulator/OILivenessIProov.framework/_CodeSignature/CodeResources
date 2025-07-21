@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		TaJv/aNDpvRlt3sAijkImYnt3S8=
+		1tzKkFt+nKP77aZFkCskqJ8l5E8=
 		</data>
 		<key>Headers/OILivenessIProov-Swift.h</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/OILivenessIProov.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		6EMw7nN5CzwHIr60k0bJqLHwkcU=
+		+S0zps2lkctjTNv04hwhk+ADdNU=
 		</data>
 		<key>Modules/OILivenessIProov.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/OILivenessIProov.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		4KLspuDjZHARQfOmCEh1ECAPIDA=
+		Kz+1gz9dtRDPZWEVP9UZO+E0p8Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -71,7 +71,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5DM0I6bIHZ212L2Yy0qhvFwux29NRhVnw2JIGY9ZuWU=
+			2Hn4Zkuk09M+TlPliCXq99CyTaFJOOJ5qQn5uQCa8y8=
 			</data>
 		</dict>
 		<key>Headers/OILivenessIProov-Swift.h</key>
@@ -120,7 +120,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bg3/n0EcaikGzutRVaxG17jQkwdFvPdLLONWvi/c6mY=
+			gdLdFKTLlJvI6+0yn2ftpVsJ4y6x4nMZkbV1b6Mdh8A=
 			</data>
 		</dict>
 		<key>Modules/OILivenessIProov.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -155,7 +155,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S0r80ZIOKZfJ1jfGBcZb4hs8SDXFJjmY1n2ZKcuQDYE=
+			OaeLDWxN4Sf4Bkbu73loDUrdJSBhf1SeSpdFKpQz9Vg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
