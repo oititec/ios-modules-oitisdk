@@ -1,11 +1,4 @@
 framework module OitiSDK {
-  umbrella header "OitiSDK.h"
-  export *
-
-  module * { export * }
-}
-
-module OitiSDK.Swift {
   header "OitiSDK-Swift.h"
   requires objc
 }
