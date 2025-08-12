@@ -1,0 +1,4 @@
+framework module OitiUtils {
+  header "OitiUtils-Swift.h"
+  requires objc
+}

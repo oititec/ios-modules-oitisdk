@@ -4,12 +4,12 @@
 import AVFoundation
 import DeveloperToolsSupport
 import Foundation
-import OICommons
-import OIComponents
-import OILivenessIProov
-import OINetwork
-import OISecurity
-@_exported import OitiSDK
+@_spi(OitiOnly) import OitiComponents
+import OitiLivenessFacetec
+import OitiLivenessIProov
+import OitiNetwork
+import OitiSecurity
+import OitiUtils
 import Swift
 import SwiftUI
 import UIKit.UIImage
@@ -17,89 +17,21 @@ import UIKit
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
-public struct LivenessManagerOptions {
+public typealias Visibility = OitiComponents.Visibility
+public protocol CustomCameraPermissionView : OitiComponents.CustomCameraPermissionView {
+  override func showBottomSheet(visibility: OitiSDK.Visibility)
 }
-extension OitiSDK.LivenessManagerOptions {
-  public static func builder(appKey: Swift.String, environment: OitiSDK.Environment) -> OitiSDK.LivenessManagerOptions.Builder
-  @_hasMissingDesignatedInitializers final public class Builder {
-    final public func setIProovCustomization(_ customization: OitiSDK.IProovCustomization) -> Self
-    final public func build() -> OitiSDK.LivenessManagerOptions
-    @objc deinit
-  }
+public typealias IProovCustomLoadingView = OitiLivenessIProov.IProovCustomLoadingView
+public typealias IProovResultLayoutType = OitiLivenessIProov.IProovResultLayoutType
+public protocol IProovCustomResultView : OitiLivenessIProov.IProovCustomResultView {
+  override func display(for resultType: OitiSDK.IProovResultLayoutType, retryReason: Swift.String?)
+  override func changeLoadingVisibility(to visibility: OitiSDK.Visibility)
 }
-public enum Environment {
-  case hml, prd
-  public static func == (a: OitiSDK.Environment, b: OitiSDK.Environment) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
-public protocol LivenessManager {
-  func start(at rootViewController: UIKit.UIViewController, options: OitiSDK.LivenessManagerOptions, callback: any OitiSDK.LivenessCallback)
-}
-public struct IProovCustomization {
-  public static func builder() -> OitiSDK.IProovCustomizationBuilder
-}
-@_hasMissingDesignatedInitializers final public class IProovCustomizationBuilder {
-  final public func build() -> OitiSDK.IProovCustomization
-  @discardableResult
-  final public func setInstructionCustomization(_ builderHandler: @escaping (_ instructionBuilder: OitiSDK.InstructionCustomizationBuilder) -> OitiSDK.InstructionCustomizationBuilder) -> Self
-  @discardableResult
-  final public func setCameraPermissionCustomization(_ builderHandler: @escaping (_ cameraPermissionBuilder: OitiSDK.CameraPermissionCustomizationBuilder) -> OitiSDK.CameraPermissionCustomizationBuilder) -> Self
-  @discardableResult
-  final public func setLivenessCustomization(_ builderHandler: @escaping (_ livenessBuilder: OILivenessIProov.IProovLivenessCustomizationBuilder) -> OILivenessIProov.IProovLivenessCustomizationBuilder) -> Self
-  @discardableResult
-  final public func setLoadingCustomization(_ builderHandler: @escaping (_ loadingBuilder: OILivenessIProov.IProovLoadingCustomizationBuilder) -> OILivenessIProov.IProovLoadingCustomizationBuilder) -> Self
-  @discardableResult
-  final public func setResultCustomization(_ builderHandler: @escaping (_ resultBuilder: OILivenessIProov.IProovResultCustomizationBuilder) -> OILivenessIProov.IProovResultCustomizationBuilder) -> Self
-  @discardableResult
-  final public func setCustomInstructionView(_ customView: any OitiSDK.LivenessCustomInstructionView) -> Self
-  @discardableResult
-  final public func setCustomCameraPermissionView(_ customView: any OitiSDK.CustomCameraPermissionView) -> Self
-  @discardableResult
-  final public func setLoadingView(_ customView: OitiSDK.IProovCustomLoadingView) -> Self
-  @discardableResult
-  final public func setResultView(_ customView: any OitiSDK.IProovCustomResultView) -> Self
-  @objc deinit
-}
-public enum LivenessProvider {
-  case iproov
-  public static func == (a: OitiSDK.LivenessProvider, b: OitiSDK.LivenessProvider) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
-public enum LivenessError : Swift.Int, Swift.Error {
-  case invalidAppKey
-  case noCameraPermission
-  case noInternetConnection
-  case livenessNotCompleted
-  case livenessNotInitialized
-  case transactionNotCompleted
-  case invalidCustomization
-  case invalidProvider
-  case genericException
-  public var code: Swift.Int {
-    get
-  }
-  public var message: Swift.String {
-    get
-  }
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-public struct LivenessResult {
-  public var valid: Swift.Bool
-  public var codId: Swift.Double
-  public var cause: Swift.String?
-  public var `protocol`: Swift.String
-  public var scanResultBlob: Swift.String?
-}
+public typealias BlobAnimationAppearance = OitiLivenessFacetec.BlobAnimationAppearance
+public typealias Liveness3DShadow = OitiLivenessFacetec.Liveness3DShadow
+public typealias Liveness3DTheme = OitiLivenessFacetec.Liveness3DTheme
+public typealias Liveness3DThemeBuilder = OitiLivenessFacetec.Liveness3DThemeBuilder
+public typealias Liveness3DTextKey = OitiLivenessFacetec.Liveness3DTextKey
 @_hasMissingDesignatedInitializers final public class CameraPermissionCustomizationBuilder {
   @discardableResult
   final public func setCameraPermissionBackButtonIcon(_ icon: UIKit.UIImage?) -> Self
@@ -143,29 +75,70 @@ public struct LivenessResult {
   final public func setCameraPermissionCloseButtonNormalStateColors(forText textColor: UIKit.UIColor?, background backgroundColor: UIKit.UIColor? = nil, border borderColor: UIKit.UIColor? = nil) -> Self
   @discardableResult
   final public func setCameraPermissionCloseButtonDisabledStateColors(forText textColor: UIKit.UIColor?, background backgroundColor: UIKit.UIColor? = nil, border borderColor: UIKit.UIColor? = nil) -> Self
-  @discardableResult
-  final public func setAccessibilityLabel(forBackButton accessibilityLabel: Swift.String) -> Self
-  @discardableResult
-  final public func setAccessibilityLabel(forCheckPermissionButton accessibilityLabel: Swift.String) -> Self
-  @discardableResult
-  final public func setAccessibilityLabel(forOpenSettingsButton accessibilityLabel: Swift.String) -> Self
-  @discardableResult
-  final public func setAccessibilityLabel(forCloseButton accessibilityLabel: Swift.String) -> Self
   @objc deinit
 }
-public typealias Visibility = OIComponents.Visibility
-public typealias IProovCustomLoadingView = OILivenessIProov.IProovCustomLoadingView
-public typealias IProovResultLayoutType = OILivenessIProov.IProovResultLayoutType
-public protocol CustomCameraPermissionView : OIComponents.CustomCameraPermissionView {
-  override func showBottomSheet(visibility: OitiSDK.Visibility)
+public enum Environment {
+  case hml, prd
+  public static func == (a: OitiSDK.Environment, b: OitiSDK.Environment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
-public protocol IProovCustomResultView : OILivenessIProov.IProovCustomResultView {
-  override func display(for resultType: OitiSDK.IProovResultLayoutType)
+public struct FacetecCustomization {
+  public static func builder() -> OitiSDK.FacetecCustomizationBuilder
 }
-public protocol LivenessCustomInstructionView : UIKit.UIView {
-  var backButton: UIKit.UIButton! { get }
-  var continueButton: UIKit.UIButton! { get }
-  func changeLoadingVisibility(to visibility: OitiSDK.Visibility)
+@_hasMissingDesignatedInitializers final public class FacetecCustomizationBuilder {
+  final public func build() -> OitiSDK.FacetecCustomization
+  @discardableResult
+  final public func setInstructionCustomization(_ builderHandler: @escaping (_ instructionBuilder: OitiSDK.InstructionCustomizationBuilder) -> OitiSDK.InstructionCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setCameraPermissionCustomization(_ builderHandler: @escaping (_ cameraPermissionBuilder: OitiSDK.CameraPermissionCustomizationBuilder) -> OitiSDK.CameraPermissionCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setLoadingCustomization(_ builderHandler: @escaping (_ loadingBuilder: OitiSDK.FacetecLoadingCustomizationBuilder) -> OitiSDK.FacetecLoadingCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setLivenessDefaultTheme(_ builderHandler: @escaping (_ defaultThemeBuilder: OitiSDK.Liveness3DThemeBuilder) -> OitiSDK.Liveness3DThemeBuilder) -> Self
+  @discardableResult
+  final public func setLivenessLowLightTheme(_ builderHandler: @escaping (_ defaultThemeBuilder: OitiSDK.Liveness3DThemeBuilder) -> OitiSDK.Liveness3DThemeBuilder) -> Self
+  @discardableResult
+  final public func setLivenessTexts(_ texts: [OitiSDK.Liveness3DTextKey : Swift.String]) -> Self
+  @discardableResult
+  final public func setCustomInstructionView(_ customView: any OitiSDK.LivenessCustomInstructionView) -> Self
+  @discardableResult
+  final public func setCustomCameraPermissionView(_ customView: any OitiSDK.CustomCameraPermissionView) -> Self
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class FacetecLoadingCustomizationBuilder {
+  @discardableResult
+  final public func setLoadingBackgroundColor(_ color: UIKit.UIColor) -> Self
+  @discardableResult
+  final public func setLoadingSpinner(withColor color: UIKit.UIColor?, width spinnerWidth: CoreFoundation.CGFloat? = nil, scaleFactor spinnerScaleFactor: Swift.Int? = nil) -> Self
+  @objc deinit
+}
+public struct IProovCustomization {
+  public static func builder() -> OitiSDK.IProovCustomizationBuilder
+}
+@_hasMissingDesignatedInitializers final public class IProovCustomizationBuilder {
+  final public func build() -> OitiSDK.IProovCustomization
+  @discardableResult
+  final public func setInstructionCustomization(_ builderHandler: @escaping (_ instructionBuilder: OitiSDK.InstructionCustomizationBuilder) -> OitiSDK.InstructionCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setCameraPermissionCustomization(_ builderHandler: @escaping (_ cameraPermissionBuilder: OitiSDK.CameraPermissionCustomizationBuilder) -> OitiSDK.CameraPermissionCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setLivenessCustomization(_ builderHandler: @escaping (_ livenessBuilder: OitiLivenessIProov.IProovLivenessCustomizationBuilder) -> OitiLivenessIProov.IProovLivenessCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setLoadingCustomization(_ builderHandler: @escaping (_ loadingBuilder: OitiLivenessIProov.IProovLoadingCustomizationBuilder) -> OitiLivenessIProov.IProovLoadingCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setResultCustomization(_ builderHandler: @escaping (_ resultBuilder: OitiLivenessIProov.IProovResultCustomizationBuilder) -> OitiLivenessIProov.IProovResultCustomizationBuilder) -> Self
+  @discardableResult
+  final public func setCustomInstructionView(_ customView: any OitiSDK.LivenessCustomInstructionView) -> Self
+  @discardableResult
+  final public func setCustomCameraPermissionView(_ customView: any OitiSDK.CustomCameraPermissionView) -> Self
+  @discardableResult
+  final public func setLoadingView(_ customView: OitiSDK.IProovCustomLoadingView) -> Self
+  @discardableResult
+  final public func setResultView(_ customView: any OitiSDK.IProovCustomResultView) -> Self
+  @objc deinit
 }
 public struct InstructionCustomization {
   public static func builder() -> OitiSDK.InstructionCustomizationBuilder
@@ -201,17 +174,75 @@ public struct InstructionCustomization {
   final public func setContinueButtonColor(forContent contentColor: UIKit.UIColor?, background backgroundColor: UIKit.UIColor? = nil, border borderColor: UIKit.UIColor? = nil) -> Self
   @objc deinit
 }
-public enum OitiSDKFactory {
-  public static func createLivenessManager(for provider: OitiSDK.LivenessProvider) -> any OitiSDK.LivenessManager
-}
 public protocol LivenessCallback : AnyObject {
   func onSuccess(_ result: OitiSDK.LivenessResult)
   func onError(_ error: OitiSDK.LivenessError)
 }
+public protocol LivenessCustomInstructionView : UIKit.UIView {
+  var backButton: UIKit.UIButton! { get }
+  var continueButton: UIKit.UIButton! { get }
+  func changeLoadingVisibility(to visibility: OitiSDK.Visibility)
+}
+public enum LivenessError : Swift.Int, Swift.Error {
+  case invalidAppKey
+  case noCameraPermission
+  case noInternetConnection
+  case livenessNotCompleted
+  case livenessNotInitialized
+  case transactionNotCompleted
+  case invalidCustomization
+  case invalidProvider
+  case genericException
+  public var code: Swift.Int {
+    get
+  }
+  public var message: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol LivenessManager {
+  func start(at rootViewController: UIKit.UIViewController, options: OitiSDK.LivenessManagerOptions, callback: any OitiSDK.LivenessCallback)
+}
+public struct LivenessManagerOptions {
+}
+extension OitiSDK.LivenessManagerOptions {
+  public static func builder(appKey: Swift.String, environment: OitiSDK.Environment) -> OitiSDK.LivenessManagerOptions.Builder
+  @_hasMissingDesignatedInitializers final public class Builder {
+    final public func setIProovCustomization(_ customization: OitiSDK.IProovCustomization) -> Self
+    final public func setFacetecCustomization(_ customization: OitiSDK.FacetecCustomization) -> Self
+    final public func build() -> OitiSDK.LivenessManagerOptions
+    @objc deinit
+  }
+}
+public struct LivenessResult {
+  public var valid: Swift.Bool
+  public var codId: Swift.Double
+  public var cause: Swift.String?
+  public var `protocol`: Swift.String
+  public var scanResultBlob: Swift.String?
+}
+public enum OitiSDKFactory {
+  public static func createLivenessManager(for provider: OitiSDK.LivenessProvider) -> any OitiSDK.LivenessManager
+}
+public enum LivenessProvider : Swift.String {
+  case iproov
+  case facetec
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 extension OitiSDK.Environment : Swift.Equatable {}
 extension OitiSDK.Environment : Swift.Hashable {}
-extension OitiSDK.LivenessProvider : Swift.Equatable {}
-extension OitiSDK.LivenessProvider : Swift.Hashable {}
 extension OitiSDK.LivenessError : Swift.Equatable {}
 extension OitiSDK.LivenessError : Swift.Hashable {}
 extension OitiSDK.LivenessError : Swift.RawRepresentable {}
+extension OitiSDK.LivenessProvider : Swift.Equatable {}
+extension OitiSDK.LivenessProvider : Swift.Hashable {}
+extension OitiSDK.LivenessProvider : Swift.RawRepresentable {}
