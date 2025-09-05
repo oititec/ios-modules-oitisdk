@@ -85,11 +85,13 @@ extension OitiLivenessFacetec.Liveness3DStarterData {
   public static func builder(withAppKey appKey: Swift.String, token sessionToken: Swift.String, environment: OitiLivenessFacetec.Environment, delegate: any OitiLivenessFacetec.Liveness3DDelegate) -> OitiLivenessFacetec.Liveness3DStarterData.Builder
   @_hasMissingDesignatedInitializers final public class Builder {
     final public func setTicket(_ ticket: Swift.String) -> Self
+    final public func setTotp(_ totp: Swift.String?) -> Self
     final public func setLoadingCustomization(_ customization: OitiLivenessFacetec.Liveness3DLoadingCustomization) -> Self
     final public func setDefaultTheme(_ theme: OitiLivenessFacetec.Liveness3DTheme?) -> Self
     final public func setLowLightTheme(_ theme: OitiLivenessFacetec.Liveness3DTheme?) -> Self
     final public func setTexts(_ texts: [OitiLivenessFacetec.Liveness3DTextKey : Swift.String]?) -> Self
     final public func setText(_ text: Swift.String, forKey key: OitiLivenessFacetec.Liveness3DTextKey) -> Self
+    final public func setTracker(_ tracker: OitiSecurity.SecurityManager?) -> Self
     final public func build() -> OitiLivenessFacetec.Liveness3DStarterData
     @objc deinit
   }

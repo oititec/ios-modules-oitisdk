@@ -10,6 +10,7 @@ import OitiNetwork
 import OitiUtils
 import Security
 import Swift
+import SystemConfiguration
 import UIKit.UIDevice
 import UIKit
 import _Concurrency
@@ -24,95 +25,9 @@ public struct CryptoManager {
   final public let longitude: Swift.Double
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class DebugLogger : OitiSecurity.DebugLoggerProtocol {
-  convenience public init(ticket: Swift.String, environment: OitiNetwork.Environment)
-  final public func logData(forStep step: Swift.String, errorDetail: OitiNetwork.ErrorDetail, provider: Swift.String)
-  @objc deinit
-}
 public protocol DebugLoggerProtocol {
-  func logData(forStep step: Swift.String, errorDetail: OitiNetwork.ErrorDetail, provider: Swift.String)
-}
-public enum EventType : Swift.String, Swift.CaseIterable {
-  case STATE_L3_hybridLoadingView
-  case STATE_L3_instructionView
-  case ACTION_L3_instructionContinueBtn
-  case ACTION_L3_instructionBackBtn
-  case STATE_L3FT_flow
-  case SYSTEM_L3_callbackSuccess
-  case SYSTEM_L3_callbackError
-  case STATE_L3_cameraPermissionView
-  case ACTION_L3_cameraPermissionBackBtn
-  case ACTION_L3_cameraPermissionCheckBtn
-  case ACTION_L3_cameraPermissionGoToSettingsBtn
-  case ACTION_L3_cameraPermissionCloseBtn
-  case STATE_L2_hybridLoadingView
-  case STATE_L2_instructionView
-  case ACTION_L2_instructionContinueBtn
-  case ACTION_L2_instructionBackBtn
-  case STATE_L2_livenessView
-  case ACTION_L2_livenessStartBtn
-  case ACTION_L2_livenessBackBtn
-  case ACTION_L2_livenessCloseBtn
-  case LOG_L2_stepChallenge
-  case LOG_L2_stepProcessImage
-  case STATE_L2_loadingView
-  case STATE_L2_resultSuccessView
-  case STATE_L2_resultErrorView
-  case ACTION_L2_resultErrorBtn
-  case SYSTEM_L2_callbackSuccess
-  case SYSTEM_L2_callbackCancelled
-  case SYSTEM_L2_callbackError
-  case STATE_L2_cameraPermissionView
-  case ACTION_L2_cameraPermissionBackBtn
-  case ACTION_L2_cameraPermissionCheckBtn
-  case ACTION_L2_cameraPermissionGoToSettingsBtn
-  case ACTION_L2_cameraPermissionCloseBtn
-  case SYSTEM_DC_hasTicket
-  case STATE_DC_hybridLoadingView
-  case STATE_DC_instructionView
-  case ACTION_DC_instructionBackBtn
-  case ACTION_DC_instructionContinueBtn
-  case STATE_DC_captureView
-  case STATE_DC_takePictureFrontDoc
-  case ACTION_DC_takePictureFrontDocBtn
-  case ACTION_DC_takePictureFrontDocBackBtn
-  case ACTION_DC_takePictureFrontDocCloseBtn
-  case STATE_DC_reviewPictureFrontDoc
-  case ACTION_DC_reviewPictureFrontDocRefuseBtn
-  case ACTION_DC_reviewPictureFrontDocConfirmBtn
-  case ACTION_DC_reviewPictureFrontDocBackBtn
-  case ACTION_DC_reviewPictureFrontDocCloseBtn
-  case STATE_DC_takePictureBackDoc
-  case ACTION_DC_takePictureBackDocBtn
-  case ACTION_DC_takePictureBackDocBackBtn
-  case ACTION_DC_takePictureBackDocCloseBtn
-  case STATE_DC_reviewPictureBackDoc
-  case ACTION_DC_reviewPictureBackDocRefuseBtn
-  case ACTION_DC_reviewPictureBackDocConfirmBtn
-  case ACTION_DC_reviewPictureBackDocBackBtn
-  case ACTION_DC_reviewPictureBackDocCloseBtn
-  case STATE_DC_loadingView
-  case STATE_DC_resultSuccessView
-  case STATE_DC_resultErrorView
-  case STATE_DC_resultRetryView
-  case ACTION_DC_resultRetryBtn
-  case SYSTEM_DC_callbackSuccess
-  case SYSTEM_DC_callbackCancelled
-  case SYSTEM_DC_callbackError
-  case STATE_DC_cameraPermissionView
-  case ACTION_DC_cameraPermissionBackBtn
-  case ACTION_DC_cameraPermissionCheckBtn
-  case ACTION_DC_cameraPermissionGoToSettingsBtn
-  case ACTION_DC_cameraPermissionCloseBtn
-  public init?(rawValue: Swift.String)
-  public typealias AllCases = [OitiSecurity.EventType]
-  public typealias RawValue = Swift.String
-  public static var allCases: [OitiSecurity.EventType] {
-    get
-  }
-  public var rawValue: Swift.String {
-    get
-  }
+  func logData(forStep step: Swift.String, totp: Swift.String?, provider: Swift.String)
+  func logData(forStep step: Swift.String, totp: Swift.String?, errorDetail: OitiNetwork.ErrorDetail, provider: Swift.String)
 }
 @_hasMissingDesignatedInitializers final public class ExceptionHandler {
   public static let shared: OitiSecurity.ExceptionHandler
@@ -124,7 +39,8 @@ public struct ExceptionPayload : Swift.Error {
 }
 @_hasMissingDesignatedInitializers final public class FaceCaptchaDebugLogger : OitiSecurity.DebugLoggerProtocol {
   convenience public init(appKey: Swift.String, environment: OitiNetwork.Environment)
-  final public func logData(forStep step: Swift.String, errorDetail: OitiNetwork.ErrorDetail, provider: Swift.String)
+  final public func logData(forStep step: Swift.String, totp: Swift.String?, provider: Swift.String)
+  final public func logData(forStep step: Swift.String, totp: Swift.String?, errorDetail: OitiNetwork.ErrorDetail, provider: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers final public class LegacyExceptionHandler {
@@ -151,11 +67,11 @@ public protocol RequestHelper {
 }
 @_hasMissingDesignatedInitializers final public class SecurityManager {
   @objc deinit
-  public static func session(for sessionIdentifier: Swift.String, environment: OitiNetwork.Environment) -> OitiSecurity.SecurityManager?
+  public static func session(for sessionIdentifier: Swift.String, environment: OitiNetwork.Environment) -> OitiSecurity.SecurityManager
   final public func requestLocation()
-  final public func trackEvent(_ event: OitiSecurity.EventType)
-  final public func uploadDeviceInfoAndLocation(appKey: Swift.String, ticket: Swift.String? = nil, journeyId: Swift.String? = nil, autoClose: Swift.Bool = true, provider: Swift.String, options: [OitiSecurity.PersistenceOption : Swift.String] = [:], completion: ((Swift.String?) -> Swift.Void)? = nil)
-  final public func uploadDeviceBehavior(with appKey: Swift.String, ticket: Swift.String? = nil, journeyId: Swift.String? = nil, autoClose: Swift.Bool = true, provider: Swift.String, options: [OitiSecurity.PersistenceOption : Swift.String] = [:], completion: ((Swift.String?) -> Swift.Void)? = nil)
+  final public func trackEvent(forScreen screen: Swift.String, step: Swift.String, action: Swift.String)
+  final public func uploadDeviceInfoAndLocation(appKey: Swift.String, autoClose: Swift.Bool = true, provider: Swift.String, options: [OitiSecurity.PersistenceOption : Swift.String] = [:], completion: ((Swift.String?) -> Swift.Void)? = nil)
+  final public func uploadDeviceBehavior(with appKey: Swift.String, autoClose: Swift.Bool = true, provider: Swift.String, options: [OitiSecurity.PersistenceOption : Swift.String] = [:], completion: ((Swift.String?) -> Swift.Void)? = nil)
 }
 extension OitiSecurity.SecurityManager : Swift.Hashable {
   public static func == (lhs: OitiSecurity.SecurityManager, rhs: OitiSecurity.SecurityManager) -> Swift.Bool
@@ -168,9 +84,6 @@ public struct SecurityPayload {
 }
 public struct SecurityEvent {
 }
-extension OitiSecurity.EventType : Swift.Equatable {}
-extension OitiSecurity.EventType : Swift.Hashable {}
-extension OitiSecurity.EventType : Swift.RawRepresentable {}
 extension OitiSecurity.PersistenceOption : Swift.Equatable {}
 extension OitiSecurity.PersistenceOption : Swift.Hashable {}
 extension OitiSecurity.PersistenceOption : Swift.RawRepresentable {}

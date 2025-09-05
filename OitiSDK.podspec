@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = 'OitiSDK'
-  s.version         = '0.6.0'
+  s.version         = '0.7.1'
   s.summary         = 'Framework OitiSDK para iOS.'
   s.homepage        = 'https://www.oititec.com.br/'
   s.license         = { :type => 'Copyright', :text => 'Copyright © 2025 Oiti. All rights reserved.' }
@@ -22,5 +22,5 @@ Pod::Spec.new do |s|
   ]
 
   s.dependency 'iProov', '12.3.1'
-  s.dependency 'OILiveness3D_FT', '9.7.66'
+  s.dependency 'OILiveness3D_FT', '9.7.79'
 end
