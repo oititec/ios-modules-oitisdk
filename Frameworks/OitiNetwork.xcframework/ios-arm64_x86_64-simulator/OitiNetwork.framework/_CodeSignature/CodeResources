@@ -10,15 +10,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		4mn7gMnOeLFqfb790V7fhtqOXmM=
+		dj07Yab9L7BNrAnHnXz5tToPG/Y=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		3/ck+xgJNCcT3X/MU81H6BD0JAU=
+		Dwe4no/wGduXEMfmf7TM+gMCci4=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		j7JYmTZFBjtc/cVFJYvdaVx0bTg=
+		nWuH1aSUIioTit1xHtfg9sAPDsk=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,19 +26,19 @@
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		j7JYmTZFBjtc/cVFJYvdaVx0bTg=
+		nWuH1aSUIioTit1xHtfg9sAPDsk=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		n8Cj+WNHEIrEWQWXnw6Zkm2w3ho=
+		SZ19+TbhwfLKYdpfYxBEOgm2qJM=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		3/ck+xgJNCcT3X/MU81H6BD0JAU=
+		Dwe4no/wGduXEMfmf7TM+gMCci4=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		LNdNRWQawtw4ILsPuZk15L0fsak=
+		7rPUvmX/c0JMNuj2850pHeEtbn4=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		LNdNRWQawtw4ILsPuZk15L0fsak=
+		7rPUvmX/c0JMNuj2850pHeEtbn4=
 		</data>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		RXnY1yn15Dc6iKUxAxtCuw0ezUs=
+		7KAzK7CBX5A5f20VB3UURFjyIMg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,14 +70,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UaXe0nTKO5TiF8bjGAR2dk+T9B1kNUBndh4usSjJ4Es=
+			yfjvaHBnLQP3sDmrOIr6rT0/xOYitCGzgZ6Sg3o9iHU=
 			</data>
 		</dict>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ssPZVSvKqiCVwQLCBmWmByGZ1t59BWz9z7y/jlsLJZ0=
+			w9h8psnofo/xNh3gTk5Nn0FjISQv8E1vB4ETYtWjd+c=
 			</data>
 		</dict>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -91,28 +91,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ssPZVSvKqiCVwQLCBmWmByGZ1t59BWz9z7y/jlsLJZ0=
+			w9h8psnofo/xNh3gTk5Nn0FjISQv8E1vB4ETYtWjd+c=
 			</data>
 		</dict>
 		<key>Modules/OitiNetwork.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BTPfbhqc2IQiktdHPm5Z7qxeXIGx0wMgjSLBBsL0rc4=
+			N5OJgqB31FdomA0FIEreXeNKwNSxeH/zl5KUFm82650=
 			</data>
 		</dict>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UaXe0nTKO5TiF8bjGAR2dk+T9B1kNUBndh4usSjJ4Es=
+			yfjvaHBnLQP3sDmrOIr6rT0/xOYitCGzgZ6Sg3o9iHU=
 			</data>
 		</dict>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TqQ3J2cQDX+I476FquPaVUVpypDVLvtm6keQ+Zb98eY=
+			u6DUWXiXDXK0HX38i2teCpdviIUuLHZThrKlPCOEDaU=
 			</data>
 		</dict>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -126,14 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TqQ3J2cQDX+I476FquPaVUVpypDVLvtm6keQ+Zb98eY=
+			u6DUWXiXDXK0HX38i2teCpdviIUuLHZThrKlPCOEDaU=
 			</data>
 		</dict>
 		<key>Modules/OitiNetwork.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7o1z9yO+wrEcTiXHODzE0Iog2LNYtmSers7JBbhBo/w=
+			eNoIWykDLlBr1otytF0PRdq2yAS/SGectUEITjvg+ww=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
